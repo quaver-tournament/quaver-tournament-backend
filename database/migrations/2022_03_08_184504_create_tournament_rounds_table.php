@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMappoolsTable extends Migration
+class CreateTournamentRoundsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateMappoolsTable extends Migration
      */
     public function up()
     {
-        Schema::create('mappools', function (Blueprint $table) {
+        Schema::create('tournament_rounds', function (Blueprint $table) {
             $table->id();
-            $table->integer('round_id')->unsigned();
+            $table->string('name');
             $table->integer('tournament_id')->unsigned();
             $table->timestamps();
 
@@ -32,6 +32,6 @@ class CreateMappoolsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mappools');
+        Schema::dropIfExists('tournament_rounds');
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMappoolsTable extends Migration
+class CreateQualifierLobbiesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class CreateMappoolsTable extends Migration
      */
     public function up()
     {
-        Schema::create('mappools', function (Blueprint $table) {
+        Schema::create('qualifier_lobbies', function (Blueprint $table) {
             $table->id();
-            $table->integer('round_id')->unsigned();
-            $table->integer('tournament_id')->unsigned();
+            $table->timestamp('time_utc');
+            $table->integer('referee_id')->unsigned();
             $table->timestamps();
 
-            $table->foreign('tournament_id')
-            ->references('id')->on('tournaments')
+            $table->foreign('referee_id')
+            ->references('id')->on('user_tournament_staff')
             ->onDelete('cascade');
         });
     }
@@ -32,6 +32,6 @@ class CreateMappoolsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mappools');
+        Schema::dropIfExists('qualifier_lobbies');
     }
 }

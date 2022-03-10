@@ -15,6 +15,8 @@ class CreateEntryQualifiersTable extends Migration
     {
         Schema::create('entry_qualifiers', function (Blueprint $table) {
             $table->id();
+            $table->integer('entry_id')->unsigned();
+            $table->integer('qualifier_lobby_id')->unsigned();
             $table->timestamps();
         });
     }
